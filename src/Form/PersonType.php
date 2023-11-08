@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class PersonType extends AbstractType
 {
@@ -18,7 +19,9 @@ class PersonType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('dateNaissance', DateType::class)
+            ->add('dateNaissance', DateType::class,[
+                'data'=>new \DateTime()
+            ])
             ->add('mail', EmailType::class)
             ->add('mdp', PasswordType::class)
             ->add('statutMartial', ChoiceType::class, [
@@ -28,8 +31,6 @@ class PersonType extends AbstractType
                     'Divorce' => 'divorce',
                     'Veuf' => 'veuf',
                 ],
-                'expanded' => true,
-                'multiple' => false,
             ])
             ->add('fastfood', ChoiceType::class, [
                 'choices' => [
