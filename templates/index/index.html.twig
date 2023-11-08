@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Personne{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle Personne</h1>
+
+    {{ form_row(form.nom) }}
+    {{ form_row(form.prenom) }}
+    {{ form_row(form.dateNaissance) }}
+    {{ form_row(form.mail) }}
+    {{ form_row(form.mdp) }}
+    {{ form_row(form.statutMartial) }}
+    {{ form_row(form.fastfood) }}
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+{% endblock %}
